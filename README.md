@@ -1,2 +1,2 @@
 # gin_auto
-无人智能
+gin框架
