@@ -1,6 +1,8 @@
 package gin_auto
 
 import (
+	"gin_auto/pkg/database"
+	"gin_auto/pkg/log"
 	"net/http"
 	"time"
 )
