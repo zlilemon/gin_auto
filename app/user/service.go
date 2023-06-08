@@ -22,6 +22,10 @@ type Service struct {
 
 var UserService = new(Service)
 
+func (s *Service) HelloWorld() (hello string) {
+	return "hello"
+}
+
 func (s *Service) SGetUserInfo(c *gin.Context, openid string) (userInfoModel []*UserInfo, err error) {
 	log.Infof("SGetUserInfo - ")
 
