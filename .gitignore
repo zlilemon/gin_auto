@@ -1,0 +1,6 @@
+/main.toml
+
+app_name = "gin_auto"
+
+# possible values : DEBUG, INFO, WARNING, ERROR, FATAL
+log_level = "DEBUG"

@@ -1,8 +1,10 @@
 package gin_auto
 
 import (
+	"gin_auto/pkg/config"
 	"gin_auto/pkg/database"
 	"gin_auto/pkg/log"
+	"gin_auto/pkg/wxpay"
 	"net/http"
 	"time"
 )

@@ -1,10 +1,11 @@
 package config
 
 import (
+	"gin_auto/pkg/log"
+	"github.com/spf13/viper"
 	"gorm.io/gorm/logger"
 	"time"
 )
-import "github.com/spf13/viper"
 
 var MysqlOption MysqlOptions
 var StoreMysqlOption MysqlOptions
