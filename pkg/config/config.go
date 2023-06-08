@@ -11,6 +11,8 @@ var MysqlOption MysqlOptions
 var StoreMysqlOption MysqlOptions
 var AccountMysqlOption MysqlOptions
 
+var WxPayOption WxPayOptions
+
 type MysqlOptions struct {
 	Host                  string
 	Port                  int64
@@ -22,6 +24,17 @@ type MysqlOptions struct {
 	MaxConnectionLifeTime time.Duration
 	LogLevel              int
 	Logger                logger.Interface
+}
+
+type WxPayOptions struct {
+	WxURI                      string
+	WxAppID                    string
+	WxSecret                   string
+	WxMchId                    string
+	WxPayNotifyUrl             string
+	MchCertificateSerialNumber string
+	MchAPIv3Key                string
+	PrivateKeyPath             string
 }
 
 func InitConf() (err error) {
@@ -55,6 +68,16 @@ func InitConf() (err error) {
 	AccountMysqlOption.Username = viper.Get("account_mysql.user").(string)
 	AccountMysqlOption.Password = viper.Get("account_mysql.password").(string)
 	AccountMysqlOption.Database = viper.Get("account_mysql.database").(string)
+
+	// 读取微信支付配置
+	WxPayOption.WxURI = viper.Get("wx_config.wxUri").(string)
+	WxPayOption.WxAppID = viper.Get("wx_config.wxAppID").(string)
+	WxPayOption.WxSecret = viper.Get("wx_config.wxSecret").(string)
+	WxPayOption.WxMchId = viper.Get("wx_config.wxMchId").(string)
+	WxPayOption.WxPayNotifyUrl = viper.Get("wx_config.wxPayNotifyUrl").(string)
+	WxPayOption.MchCertificateSerialNumber = viper.Get("wx_config.mchCerificateSerialNumber").(string)
+	WxPayOption.MchAPIv3Key = viper.Get("wx_config.mchAPIv3Key").(string)
+	WxPayOption.PrivateKeyPath = viper.Get("wx_config.privateKeyPath").(string)
 
 	return nil
 }
