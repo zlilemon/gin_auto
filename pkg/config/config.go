@@ -13,6 +13,9 @@ var AccountMysqlOption MysqlOptions
 
 var WxPayOption WxPayOptions
 
+var XiaomiDeviceOption XiaomiDeviceOptions
+var TuyaDeviceOption TuyaDeviceOptions
+
 type MysqlOptions struct {
 	Host                  string
 	Port                  int64
@@ -35,6 +38,15 @@ type WxPayOptions struct {
 	MchCertificateSerialNumber string
 	MchAPIv3Key                string
 	PrivateKeyPath             string
+}
+
+type XiaomiDeviceOptions struct {
+	XiaomiURI                 string
+	XiaomiHomeAssistanceToken string
+}
+
+type TuyaDeviceOptions struct {
+	TuyaURI string
 }
 
 func InitConf() (err error) {
@@ -78,6 +90,13 @@ func InitConf() (err error) {
 	WxPayOption.MchCertificateSerialNumber = viper.Get("wx_config.mchCerificateSerialNumber").(string)
 	WxPayOption.MchAPIv3Key = viper.Get("wx_config.mchAPIv3Key").(string)
 	WxPayOption.PrivateKeyPath = viper.Get("wx_config.privateKeyPath").(string)
+
+	// xiaomi
+	XiaomiDeviceOption.XiaomiURI = viper.Get("xiaomi_device.xiaomiUri").(string)
+	XiaomiDeviceOption.XiaomiHomeAssistanceToken = viper.Get("xiaomi_device.xiaomiHomeAssistanceToken").(string)
+
+	//tuya
+	TuyaDeviceOption.TuyaURI = viper.Get("tuya_device.tuyaUri").(string)
 
 	return nil
 }

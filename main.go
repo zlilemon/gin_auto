@@ -5,6 +5,7 @@ import (
 	"gin_auto/pkg/database"
 	"gin_auto/pkg/log"
 	"gin_auto/pkg/wxpay"
+	"gin_auto/router"
 	"net/http"
 	"time"
 )
