@@ -14,6 +14,7 @@ import (
 
 type IService interface {
 	SFreshToken(c *gin.Context) (err error)
+	HelloWorld()
 }
 
 type Service struct {
@@ -22,8 +23,8 @@ type Service struct {
 
 var UserService = new(Service)
 
-func (s *Service) HelloWorld() (hello string) {
-	return "hello"
+func (s *Service) HelloWorld() {
+	fmt.Println("hello cron")
 }
 
 func (s *Service) SGetUserInfo(c *gin.Context, openid string) (userInfoModel []*UserInfo, err error) {

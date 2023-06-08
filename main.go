@@ -1,4 +1,4 @@
-package gin_auto
+package main
 
 import (
 	"gin_auto/pkg/config"

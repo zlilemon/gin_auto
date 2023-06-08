@@ -19,7 +19,7 @@ func main() {
 	// 添加一个定时任务
 	cron.AddFunc("*  *  *  *  *  *", helloCron)
 
-	cron.AddFunc("*  *  *  *  *  *", user.UserService.HelleWorld)
+	cron.AddFunc("*  *  *  *  *  *", user.UserService.HelloWorld)
 
 	// 启动计划任务
 	cron.Start()
