@@ -1,9 +1,9 @@
 package store
 
 import (
-	"gin_auto/pkg/database"
-	"gin_auto/pkg/log"
 	"github.com/gin-gonic/gin"
+	"github.com/zlilemon/gin_auto/pkg/database"
+	"github.com/zlilemon/gin_auto/pkg/log"
 	"strconv"
 	"time"
 )

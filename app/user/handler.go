@@ -2,10 +2,10 @@ package user
 
 import (
 	"fmt"
-	"gin_auto/app/auth"
-	"gin_auto/pkg/comm"
-	"gin_auto/pkg/log"
 	"github.com/gin-gonic/gin"
+	"github.com/zlilemon/gin_auto/app/auth"
+	"github.com/zlilemon/gin_auto/pkg/comm"
+	"github.com/zlilemon/gin_auto/pkg/log"
 	"net/http"
 	"time"
 )

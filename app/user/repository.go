@@ -1,10 +1,10 @@
 package user
 
 import (
-	"gin_auto/pkg/database"
-	"gin_auto/pkg/log"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
+	"github.com/zlilemon/gin_auto/pkg/database"
+	"github.com/zlilemon/gin_auto/pkg/log"
 )
 
 type IRepository interface {

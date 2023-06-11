@@ -3,9 +3,9 @@ package auth
 import (
 	"encoding/json"
 	"fmt"
-	"gin_auto/pkg/config"
-	"gin_auto/pkg/log"
 	"github.com/gin-gonic/gin"
+	"github.com/zlilemon/gin_auto/pkg/config"
+	"github.com/zlilemon/gin_auto/pkg/log"
 	"io/ioutil"
 	"net/http"
 )

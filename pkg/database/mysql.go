@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"gorm.io/gorm/logger"
 
-	"gin_auto/pkg/config"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
+	"github.com/zlilemon/gin_auto/pkg/config"
 
 	//"gorm.io/driver/mysql"
 	//"gorm.io/gorm"

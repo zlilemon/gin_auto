@@ -2,11 +2,11 @@ package wxpay
 
 import (
 	"context"
-	"gin_auto/pkg/config"
-	"gin_auto/pkg/log"
 	"github.com/wechatpay-apiv3/wechatpay-go/core"
 	"github.com/wechatpay-apiv3/wechatpay-go/core/option"
 	"github.com/wechatpay-apiv3/wechatpay-go/utils"
+	"github.com/zlilemon/gin_auto/pkg/config"
+	"github.com/zlilemon/gin_auto/pkg/log"
 )
 
 var WechatPayClient *core.Client

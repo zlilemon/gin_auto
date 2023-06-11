@@ -1,8 +1,8 @@
 package config
 
 import (
-	"gin_auto/pkg/log"
 	"github.com/spf13/viper"
+	"github.com/zlilemon/gin_auto/pkg/log"
 	"gorm.io/gorm/logger"
 	"time"
 )

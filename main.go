@@ -1,11 +1,11 @@
 package main
 
 import (
-	"gin_auto/pkg/config"
-	"gin_auto/pkg/database"
-	"gin_auto/pkg/log"
-	"gin_auto/pkg/wxpay"
-	"gin_auto/router"
+	"github.com/zlilemon/gin_auto/pkg/config"
+	"github.com/zlilemon/gin_auto/pkg/database"
+	"github.com/zlilemon/gin_auto/pkg/log"
+	"github.com/zlilemon/gin_auto/pkg/wxpay"
+	"github.com/zlilemon/gin_auto/router"
 	"net/http"
 	"time"
 )
