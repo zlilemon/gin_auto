@@ -47,6 +47,7 @@ CREATE TABLE `order_detail` (
     `bill_status` varchar(64) NOT NULL DEFAULT '',
     `pay_status` varchar(64) NOT NULL DEFAULT '',
     `notify_status` varchar(64) NOT NULL DEFAULT '',
+    `device_status` varchar(64) NOT NULL DEFAULT '' COMMENT '设备状态，用于在订单到期后，设备状态的关闭，以及后续检查，CLOSED：设备完全关闭, TEMP_CLOSED：设备部份关闭',
     `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`id`),

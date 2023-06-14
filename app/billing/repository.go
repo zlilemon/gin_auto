@@ -149,3 +149,21 @@ func (r *Repository) UpdateOrderInfo(c *gin.Context, req UpdateBillingReq) (err 
 
 	return
 }
+
+func (r *Repository) GetOrderStatusCheck(c *gin.Context, req BillingStatusCheckReq) (err error, billingOrderStatusCheckRespList []*BillingStatusCheckResp) {
+	log.Infof("GetOrder ")
+	var result *gorm.DB
+
+	log.Infof("current_time_unix:%s", req.CheckUnixTime)
+	if req.CheckUnixTime != "" && req.OutTradeNo != "" && req.BeginDate != "" && req.EndDate != "" {
+		result = database.StoreDB.Debug().Table("order_detail").Limit(req.PageSize).Offset((req.Page)*req.PageSize).
+			Where("openid=? and out_trade_no=? and book_begin_date=? and book_end_date=?",
+				req.OpenId, req.OutTradeNo, req.BeginDate, req.EndDate).Order("created_at desc").
+			Find(&billingRespList)
+	}
+
+	result = database.StoreDB.Debug().Table("order_detail").
+		Where("order_type='bookConsume' and end_unix_time=? and device_status!='CLOSED'", req.CheckUnixTime).
+		Find(&billingOrderStatusCheckRespList)
+	return
+}

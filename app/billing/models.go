@@ -108,3 +108,17 @@ type OrderDetail struct {
 	PayStatus      string `json:"pay_status"`    // 支付状态，同步返回，Init：初始状态，Success：支付成功， Pending：支付处理中，FAIL：支付失败
 	NotifyStatus   string `json:"notify_status"` // 支付异步返回状态，Init：初始状态，Success：支付成功， Pending：支付处理中，FAIL：支付失败
 }
+
+type BillingStatusCheckReq struct {
+	CheckUnixTime int `json:"check_unix_time"`
+}
+
+type BillingStatusCheckResp struct {
+	CheckUnixTime  int    `json:"check_unix_time"`
+	StoreId        string `json:"store_id"`
+	SeatId         string `json:"seat_id"`
+	OutTradeNo     string `json:"out_trade_no"`
+	ChannelOrderNo string `json:"channel_order_no"`
+	BeginUnixTime  int    `json:"begin_unix_time"`
+	EndUnixTime    int    `json:"end_unix_time"`
+}
