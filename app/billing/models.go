@@ -110,15 +110,15 @@ type OrderDetail struct {
 }
 
 type BillingStatusCheckReq struct {
-	CheckUnixTime int `json:"check_unix_time"`
+	CheckUnixTime int64 `json:"check_unix_time"`
 }
 
 type BillingStatusCheckResp struct {
-	CheckUnixTime  int    `json:"check_unix_time"`
+	CheckUnixTime  int64  `json:"check_unix_time"`
 	StoreId        string `json:"store_id"`
 	SeatId         string `json:"seat_id"`
 	OutTradeNo     string `json:"out_trade_no"`
 	ChannelOrderNo string `json:"channel_order_no"`
-	BeginUnixTime  int    `json:"begin_unix_time"`
-	EndUnixTime    int    `json:"end_unix_time"`
+	BeginUnixTime  int64  `json:"begin_unix_time"`
+	EndUnixTime    int64  `json:"end_unix_time"`
 }

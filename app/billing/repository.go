@@ -150,20 +150,38 @@ func (r *Repository) UpdateOrderInfo(c *gin.Context, req UpdateBillingReq) (err 
 	return
 }
 
-func (r *Repository) GetOrderStatusCheck(c *gin.Context, req BillingStatusCheckReq) (err error, billingOrderStatusCheckRespList []*BillingStatusCheckResp) {
-	log.Infof("GetOrder ")
+func (r *Repository) GetOrderStatusCheck(c *gin.Context, req BillingStatusCheckReq) (billingOrderStatusCheckRespList []*BillingStatusCheckResp, err error) {
+	log.Infof("GetOrderStatusCheck ")
 	var result *gorm.DB
 
-	log.Infof("current_time_unix:%s", req.CheckUnixTime)
-	if req.CheckUnixTime != "" && req.OutTradeNo != "" && req.BeginDate != "" && req.EndDate != "" {
-		result = database.StoreDB.Debug().Table("order_detail").Limit(req.PageSize).Offset((req.Page)*req.PageSize).
-			Where("openid=? and out_trade_no=? and book_begin_date=? and book_end_date=?",
-				req.OpenId, req.OutTradeNo, req.BeginDate, req.EndDate).Order("created_at desc").
-			Find(&billingRespList)
-	}
+	var billingRespList []*BillingInfoResp
 
 	result = database.StoreDB.Debug().Table("order_detail").
 		Where("order_type='bookConsume' and end_unix_time=? and device_status!='CLOSED'", req.CheckUnixTime).
-		Find(&billingOrderStatusCheckRespList)
+		Find(&billingRespList)
+
+	if result.Error != nil {
+		log.Errorf("GetOrderStatusCheck error, err_msg:%s", result.Error)
+	}
+	if result.RowsAffected == 0 {
+		// 没能找到在当前这个时间点到期的订单，不一定代表出错
+		log.Infof("GetOrderStatusCheck Null, can not find billing order info")
+	}
+
+	log.Infof("result.RowsAffected:%d", result.RowsAffected)
+	log.Infof("billingRespList len:%d", len(billingRespList))
+	log.Infof("billingRespList: %s", billingRespList)
+
+	for _, v := range billingRespList {
+		billingStatus := BillingStatusCheckResp{}
+		billingStatus.StoreId = v.ShopId
+		billingStatus.SeatId = v.SeatId
+		billingStatus.OutTradeNo = v.OutTradeNo
+		billingStatus.ChannelOrderNo = v.ChannelOrderNo
+		billingStatus.BeginUnixTime = v.BeginUnixTime
+		billingStatus.EndUnixTime = v.EndUnixTime
+
+		billingOrderStatusCheckRespList = append(billingOrderStatusCheckRespList, &billingStatus)
+	}
 	return
 }

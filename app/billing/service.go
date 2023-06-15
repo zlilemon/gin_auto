@@ -98,3 +98,25 @@ func (s *Service) SUpdateBilling(c *gin.Context, req UpdateBillingReq) (err erro
 	log.Infof("SUpdateBilling Success")
 	return
 }
+
+func (s *Service) SGetOrderStatusCheck(c *gin.Context, req BillingStatusCheckReq) (resp []*BillingStatusCheckResp, err error) {
+	log.Infof("SGetOrderStatusCheck - ")
+
+	//orderResp := make([]*BillingInfoResp, 0)
+	if req.CheckUnixTime == 0 {
+		currentTime := time.Now().Unix()
+		req.CheckUnixTime = currentTime
+	}
+
+	resp, err = BillingRepository.GetOrderStatusCheck(c, req)
+
+	if err != nil {
+		log.Errorf("failed to GetOrderInfo - %+v", err)
+		return
+	}
+
+	log.Infof("resp : %+v", resp)
+	log.Infof("orderStatusResp len:%d", len(resp))
+	//resp = &orderResp
+	return
+}
