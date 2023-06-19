@@ -177,6 +177,7 @@ func (r *Repository) GetOrderStatusCheck(c *gin.Context, req BillingStatusCheckR
 		billingStatus.StoreId = v.ShopId
 		billingStatus.SeatId = v.SeatId
 		billingStatus.OutTradeNo = v.OutTradeNo
+		billingStatus.OpenId = v.OpenId
 		billingStatus.ChannelOrderNo = v.ChannelOrderNo
 		billingStatus.BeginUnixTime = v.BeginUnixTime
 		billingStatus.EndUnixTime = v.EndUnixTime
