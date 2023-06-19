@@ -118,6 +118,7 @@ type BillingStatusCheckResp struct {
 	StoreId        string `json:"store_id"`
 	SeatId         string `json:"seat_id"`
 	OutTradeNo     string `json:"out_trade_no"`
+	OpenId         string `json:"openid"`
 	ChannelOrderNo string `json:"channel_order_no"`
 	BeginUnixTime  int64  `json:"begin_unix_time"`
 	EndUnixTime    int64  `json:"end_unix_time"`
