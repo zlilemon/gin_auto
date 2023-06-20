@@ -158,9 +158,8 @@ func (r *Repository) GetOrderStatusCheck(c *gin.Context, req BillingStatusCheckR
 
 	log.Infof("check_unix_time:%d", req.CheckUnixTime)
 
-	result = database.StoreDB.Debug().Table("order_detail").
-		Where("order_type='bookConsume' and end_unix_time=? and device_status!='CLOSED'", req.CheckUnixTime).
-		Find(&billingRespList)
+	result = database.StoreDB.Debug().Table("order_detail").Where(
+		"order_type='bookConsume' and end_unix_time=? and device_status!='CLOSED'", req.CheckUnixTime).Find(billingRespList)
 
 	log.Infof("result :%+v", result)
 
