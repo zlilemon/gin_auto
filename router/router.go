@@ -3,6 +3,7 @@ package router
 import (
 	"gin_auto/app/account"
 	"gin_auto/app/auth"
+	"gin_auto/app/billing"
 	"gin_auto/app/book"
 	"gin_auto/app/device"
 	"gin_auto/app/pay"
@@ -153,6 +154,11 @@ func InitRouter() *gin.Engine {
 
 	router.GET("/order/listDivideByTime", func(context *gin.Context) {
 		book.GetOrderDivideByTime(context)
+	})
+
+	// billing 模块
+	router.GET("/billing/getOrderStatusCheck", func(context *gin.Context) {
+		billing.GetOrderStatusCheck(context)
 	})
 
 	return router

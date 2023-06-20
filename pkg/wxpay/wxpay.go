@@ -22,6 +22,9 @@ func InitWxPayClient() {
 		log.Errorf("load merchant private key error")
 	}
 
+	log.Infof("mchID:%s, mchCertificateSerialNumber:%s, mchAPIv3Key:%s, mchPrivateKey:%s",
+		mchID, mchCertificateSerialNumber, mchAPIv3Key, mchPrivateKey)
+
 	ctx := context.Background()
 	opts := []core.ClientOption{
 		option.WithWechatPayAutoAuthCipher(mchID, mchCertificateSerialNumber, mchPrivateKey, mchAPIv3Key),
