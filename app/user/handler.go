@@ -23,6 +23,20 @@ func Ping(c *gin.Context) {
 	return
 }
 
+func TestAuth(c *gin.Context) {
+	log.Infof("start to TestAuth ... ")
+
+	currentTime := time.Now()
+	pingContext := fmt.Sprintf("ping Success @ %s", currentTime)
+
+	c.JSON(http.StatusOK, gin.H{
+		"code": 200,
+		"data": pingContext,
+	})
+
+	return
+}
+
 func GetUserInfo(c *gin.Context) error {
 	log.Info("start go GetUserInfo")
 

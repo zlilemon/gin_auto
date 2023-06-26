@@ -16,6 +16,8 @@ var WxPayOption WxPayOptions
 var XiaomiDeviceOption XiaomiDeviceOptions
 var TuyaDeviceOption TuyaDeviceOptions
 
+var JWTSecretKey string
+
 type MysqlOptions struct {
 	Host                  string
 	Port                  int64
@@ -59,6 +61,9 @@ func InitConf() (err error) {
 	if err != nil {
 		log.Fatal("read config fatal : %s")
 	}
+
+	// JWT secret config
+	JWTSecretKey = viper.Get("jwt.secret_key").(string)
 
 	// 读取 wxapp mysql的db配置
 	MysqlOption.Host = viper.Get("mysql.ip").(string)

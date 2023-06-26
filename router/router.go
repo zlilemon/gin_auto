@@ -20,6 +20,14 @@ func InitRouter() *gin.Engine {
 		user.Ping(context)
 	})
 
+	router.GET("/testAuth", middleware.JWT(), func(context *gin.Context) {
+		user.TestAuth(context)
+	})
+
+	router.GET("/testAuthV2", func(context *gin.Context) {
+		user.TestAuth(context)
+	})
+
 	// user 相关
 	router.GET("/user/login", func(context *gin.Context) {
 		user.WxLogin(context)

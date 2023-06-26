@@ -1,5 +1,7 @@
 package auth
 
+import "github.com/golang-jwt/jwt"
+
 type FreshTokenReq struct {
 }
 
@@ -40,4 +42,10 @@ type AccessTokenResponse struct {
 type AccessTokenInfo struct {
 	AccessToken string `json:"access_token"`
 	ExpiresIn   int    `json:"expires_in"`
+}
+
+type Claims struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+	jwt.StandardClaims
 }
